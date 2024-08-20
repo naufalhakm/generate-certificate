@@ -1,4 +1,3 @@
-import express from 'express';
 import { app } from '../api';
 import request from "supertest";
 describe('GET /test', () => {

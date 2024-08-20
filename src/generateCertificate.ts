@@ -1,6 +1,5 @@
 import puppeteer from 'puppeteer';
 import fetch from 'node-fetch';
-import * as fs from 'fs';
 
 interface CertificateData {
     success: boolean;

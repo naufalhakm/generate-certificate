@@ -1,6 +1,5 @@
 import express from 'express';
 import amqp from 'amqplib';
-import { json } from 'stream/consumers';
 
 const app = express();
 const amqpUrl = process.env.CLOUDAMQP_URL || 'amqp://admin:pass@rabbitmq:5672';
