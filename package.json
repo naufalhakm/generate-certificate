@@ -1,0 +1,38 @@
+{
+  "name": "generate-certificate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node dist/api.js",
+    "consumer": "node dist/consumer.js",
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "dev:app": "nodemon --watch src --exec ts-node src/api.ts",
+    "dev:consumer": "nodemon --watch src --exec ts-node src/consumer.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/amqplib": "^0.10.5",
+    "amqplib": "^0.10.4",
+    "express": "^4.19.2",
+    "node-fetch": "^2.7.0",
+    "puppeteer": "^23.0.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.2.0",
+    "@types/node-fetch": "^2.6.11",
+    "@types/supertest": "^6.0.2",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}

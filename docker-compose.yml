@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      - NODE_ENV=production
+      - CLOUDAMQP_URL=amqp://admin:pass@rabbitmq:5672
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run dev:app
+
+  consumer:
+    build: .
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    volumes:
+      - .:/consumer
+      - /app/node_modules
+    environment:
+      - CLOUDAMQP_URL=amqp://admin:pass@rabbitmq:5672
+    command: npm run dev:consumer
+  
+  rabbitmq:
+    build: ./rabbitmq
+    container_name: 'rabbitmq'
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=pass
+    ports:
+      - 5672:5672
+      - 15672:15672
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:15672"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
