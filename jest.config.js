@@ -4,4 +4,3 @@ module.exports = {
     moduleFileExtensions: ['ts', 'js'],
     testMatch: ['**/*.test.ts'],
   };
-  
