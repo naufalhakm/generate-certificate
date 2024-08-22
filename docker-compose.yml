@@ -17,7 +17,6 @@ services:
     command: npm run dev:app
 
   consumer:
-    build: .
     depends_on:
       rabbitmq:
         condition: service_healthy
