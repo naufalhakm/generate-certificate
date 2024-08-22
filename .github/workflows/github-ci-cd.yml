@@ -77,4 +77,5 @@ jobs:
           docker --version
           docker-compose --version
           git pull origin main
+          docker-compose build
           docker-compose up -d --force-recreate

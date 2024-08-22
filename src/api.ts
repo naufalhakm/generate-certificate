@@ -1,9 +1,26 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import amqp from 'amqplib';
 
 const app = express();
 const amqpUrl = process.env.CLOUDAMQP_URL || 'amqp://admin:pass@rabbitmq:5672';
 const queue = 'certificateQueue';
+
+const CORS = () => {
+    return (req: Request, res: Response, next: NextFunction) => {
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Credentials', 'true');
+      res.header('Access-Control-Allow-Methods', 'GET,OPTIONS,POST,PUT,DELETE');
+      res.header('Access-Control-Allow-Headers', 'Authorization, Content-Type, Accept, Access-Control-Allow-Origin, Access-Control-Allow-Headers');
+      
+      if (req.method === 'OPTIONS') {
+        return res.sendStatus(204); // No Content
+      }
+  
+      next();
+    };
+  };
+
+app.use(CORS());
 
 app.use(express.json());
 
