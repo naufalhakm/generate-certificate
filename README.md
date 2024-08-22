@@ -9,3 +9,16 @@ Generate Certificate that run in the background written in **TypeScript** using 
 - Rabbit MQ
 - Docker
 - Puppeteer
+
+## Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/naufalhakm/generate-certificate.git
+```
+Running project:
+
+```bash
+docker compose up --build -d
+```
