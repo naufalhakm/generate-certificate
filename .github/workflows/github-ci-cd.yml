@@ -75,6 +75,6 @@ jobs:
         script: |
           cd generate-certificate
           docker --version
-          docker compose --version
+          docker-compose --version
           git pull origin main
-          docker compose up -d --force-recreate
+          docker-compose up -d --force-recreate
