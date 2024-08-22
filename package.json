@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --forceExit",
     "start": "node dist/api.js",
     "consumer": "node dist/consumer.js",
     "build": "tsc",
