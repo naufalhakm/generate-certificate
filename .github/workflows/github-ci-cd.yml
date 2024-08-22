@@ -67,5 +67,6 @@ jobs:
         host: ${{ secrets.GCE_INSTANCE_IP }}
         username: ${{ secrets.GCE_SSH_USERNAME }}
         key: ${{ secrets.KEY }}
+        passphrase: ${{ secrets.PASSPHRASE }}
         port: ${{ secrets.PORT }}
         script: whoami
