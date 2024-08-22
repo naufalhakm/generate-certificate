@@ -55,9 +55,17 @@ jobs:
         push: true
         tags: naufalhakm/generate-certificate:latest
 
-    - name: Deploy to GCP VM
-      run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.GCE_SSH_USERNAME }}@${{ secrets.GCE_INSTANCE_IP }} << 'EOF'
-        docker-compose -f /path/to/docker-compose.yml pull
-        docker-compose -f /path/to/docker-compose.yml up -d --remove-orphans
-        EOF
+    # - name: Deploy to GCP VM
+    #   run: |
+    #     ssh -o StrictHostKeyChecking=no ${{ secrets.GCE_SSH_USERNAME }}@${{ secrets.GCE_INSTANCE_IP }} << 'EOF'
+    #     docker-compose -f /path/to/docker-compose.yml pull
+    #     docker-compose -f /path/to/docker-compose.yml up -d --remove-orphans
+    #     EOF
+    - name: executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.GCE_INSTANCE_IP }}
+        username: ${{ secrets.GCE_SSH_USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: ${{ secrets.PORT }}
+        script: whoami
