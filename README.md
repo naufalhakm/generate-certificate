@@ -8,7 +8,9 @@ Generate Certificate that run in the background written in **TypeScript** using 
 - Jest
 - Rabbit MQ
 - Docker
+- Docker Compose
 - Puppeteer
+- NodeJS
 
 ## Getting Started
 
